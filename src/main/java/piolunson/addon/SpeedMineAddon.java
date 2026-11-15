@@ -5,6 +5,7 @@ import meteordevelopment.meteorclient.addons.MeteorAddon;
 import meteordevelopment.meteorclient.systems.modules.Category;
 import meteordevelopment.meteorclient.systems.modules.Module;
 import meteordevelopment.meteorclient.systems.modules.Modules;
+import piolunson.addon.modules.Journal;
 import piolunson.addon.modules.SpeedMine;
 
 public class SpeedMineAddon extends MeteorAddon {
@@ -13,6 +14,7 @@ public class SpeedMineAddon extends MeteorAddon {
     @Override
     public void onInitialize() {
         add(new SpeedMine());
+        add(new Journal());
     }
 
     private void add(Module module) {

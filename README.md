@@ -1,7 +1,7 @@
 # for-meteor-addon
 
-A [Meteor Client](https://meteorclient.com) addon with one module: **SpeedMine** — packet mining
-with automatic rebreak.
+A [Meteor Client](https://meteorclient.com) addon with two modules: **SpeedMine** (packet mining
+with automatic rebreak) and **Journal** (a client-side session log).
 
 Built for Minecraft 1.21.11, Fabric Loader 0.18.2, Meteor Client `1.21.11-SNAPSHOT`.
 
@@ -40,6 +40,23 @@ configurable number of attempts.
 `render`, `shape-mode`, `lines` and `sides`. There is a single line color (no start/end gradient)
 and no glass/silhouette related options.
 
+## Journal
+
+An original module that keeps a small log of the session while it is enabled and prints a summary
+when you turn it off: time played, blocks mined, distance walked and deaths. It sends no packets
+and changes no behaviour, so it is safe to leave on anywhere.
+
+**Settings**
+
+| Setting | Default | Description |
+| --- | --- | --- |
+| `track-distance` | true | Counts how far you have walked (teleports and respawns are ignored). |
+| `track-mined` | true | Counts blocks you finished breaking. |
+| `track-deaths` | true | Counts your deaths. |
+| `print-on-disable` | true | Prints the summary in chat when the module is turned off. |
+
+The module info string shows the mined block count while it is active.
+
 ## Build
 
 ```bash
@@ -53,7 +70,8 @@ Meteor Client.
 
 ```
 src/main/java/piolunson/addon/SpeedMineAddon.java        addon entrypoint, category, module registration
-src/main/java/piolunson/addon/modules/SpeedMine.java      the module
+src/main/java/piolunson/addon/modules/SpeedMine.java      the speed mine module
+src/main/java/piolunson/addon/modules/Journal.java        the session journal module
 src/main/resources/fabric.mod.json                        meteor entrypoint
 ```
 
